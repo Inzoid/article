@@ -36,7 +36,8 @@ class ReminderEmailSender
             'email' => $user->email,
             'code' => $reminder->code,
         ];
-
+   
+        
         Mail::to($user->email)->queue(new ReminderMailable($detail));
     }
 }

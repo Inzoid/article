@@ -9,19 +9,19 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Sentinel,Reminder;
+use App\User;
 
 class ReminderEvent
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct()
+
+    public function __construct($user, $reminder)
     {
-        //
+        
+        $this->user = $user;
+        $this->reminder = $reminder;
     }
 
     /**

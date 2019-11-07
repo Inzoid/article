@@ -1,5 +1,4 @@
-@extends('layout.blade')
-@section('container')
+
 
 <h3>Hello {!! $detail['email'] !!}</h3>
 
@@ -9,10 +8,14 @@
     <br>
     Tapi jika iya, klik link dibawah untuk mengganti password
 </p>
+<?php
 
-<a href="{{ route('reminders.edit', ['id' => $detail['id'], 'code' =>
-    $detail['code']) }}">Click Me</a>
-
+$id = $detail['id'];
+$code = $detail['code'];
+//dd($code);
+?>
+<a href="{{ route('reminders.edit', ['id' => $id, 'code' =>
+    $code]) }}">Click Me
+</a>
 <h2>Thanks</h2>
 
-@endsection

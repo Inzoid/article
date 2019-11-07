@@ -32,7 +32,7 @@ class ReminderMailable extends Mailable
     {
         return $this->from('admin@inzoid.com')
         ->subject('MD - Request reset Password')
-        ->view('email.reminder')
+        ->view('emails.reminder')
         ->with([
             'detail' => $this->detail,
         ]);

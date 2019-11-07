@@ -26,10 +26,6 @@ Route::get('login',  'SessionsController@login')->name('login');
 Route::post('login', 'SessionsController@login_store')->name('login.store');
 Route::get('logout', 'SessionsController@logout')->name('logout');
 
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');
-
 Route::get('/forgot-password', 'ReminderController@create')->name('reminders.create');
 Route::post('/forgot-password', 'ReminderController@store')->name('reminders.store');
 

@@ -39,13 +39,8 @@
 			<div class="wrap-login100">
 				<form class="login100-form validate-form">
 					
-
-					<span class="login100-form-title p-b-34 p-t-27">
-						Forgot Password
-					</span>
-
-		@if(session('notice'))
-          <div class="alert alert-danger alert-dismissible fade show" role="alert"">
+        @if(session('notice'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert"">
                   <strong>{!!session('notice') !!}</strong>
                   <button type="button" class="close" data-dismiss="alert" aria-label="Close">
 
@@ -53,20 +48,27 @@
           </div>
         @endif
 
+					<span class="login100-form-title p-b-34 p-t-27">
+						Forgot Password
+					</span>
+
+              
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
+
 					<div class="container-login100-form-btn">
 						<input type="submit" class="login100-form-btn" value="Login">
 					</div>
+                  
 
 				</form>
 			</div>
 		</div>
 	</div>
-	
+	</form>
 
 	<div id="dropDownSelect1"></div>
 	
