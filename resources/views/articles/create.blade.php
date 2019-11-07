@@ -6,11 +6,19 @@
       <div class="container">
 
         <form action="{{ route('articles.store') }}" method="POST">
-          {{ csrf_field() }}    
-        
+          {{ csrf_field() }}           
         <div class="mb-3">           
          <h3>New Artikel</h3>
         </div>
+
+        @if(session('notice'))
+          <div class="alert alert-danger alert-dismissible fade show" role="alert"">
+                  <strong>{!!session('notice') !!}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                  </button>
+          </div>
+        @endif
        
         <div class="row">
           <div class="col-lg-8 mb-5" >
