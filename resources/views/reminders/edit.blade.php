@@ -53,12 +53,21 @@
           </div>
         @endif
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+		@if(session('error'))
+          <div class="alert alert-success alert-dismissible fade show" role="alert"">
+                  <strong>{!!session('error') !!}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                  </button>
+          </div>
+        @endif
+
+					<div class="wrap-input100 validate-input">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
 
-					<div class="wrap-input100 validate-input" data-validate = "Enter password">
+					<div class="wrap-input100 validate-input">
 						<input class="input100" type="password" name="passwordconfirmation" placeholder="Konfirmasi Password">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>

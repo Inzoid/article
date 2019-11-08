@@ -55,11 +55,13 @@
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
+						<span class="text-danger">{!! $errors->first('email') !!}</span>
 					</div>
 
 					<div class="wrap-input100 validate-input" data-validate="Enter password">
 						<input class="input100" type="password" name="password" placeholder="Password">
 						<span class="focus-input100" data-placeholder="&#xf191;"></span>
+						<span class="text-danger">{!! $errors->first('password') !!}</span>
 					</div>
 
 					<div class="contact100-form-checkbox">

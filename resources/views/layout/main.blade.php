@@ -9,7 +9,7 @@
     <link href="/https://fonts.googleapis.com/css?family=Work+Sans:400,700,900&display=swap" rel="stylesheet">
 
     <link rel="stylesheet" href="/fonts/icomoon/style.css">
-
+    <link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
     <link rel="stylesheet" href="/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/bootstrap-datepicker.css">
     <link rel="stylesheet" href="/css/jquery.fancybox.min.css">
@@ -65,7 +65,7 @@
                   <li>
                       <form class="form-inline">
                         <div class="form-group">
-                          <input class="form-control" type="text" name="content" placeholder="Search" />
+                          <input class="search-text form-control" type="text" name="search" placeholder="Search" />
                         </div>
                       </form>
                   </li>
@@ -78,6 +78,17 @@
 
 
 @yield('container')
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="js/custom.js"></script>
+    <script src="js/main.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.js"
+    integrity="sha256-WpOohJOqMqqyKL9FccASB9O0KwACQJpFTUBLTYOVvVU="
+    crossorigin="anonymous"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.4.1.slim.js"
+    integrity="sha256-BTlTdQO9/fascB1drekrDVkaKd9PkwBymMlHOiG+qLI="
+    crossorigin="anonymous"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/jquery-migrate-3.0.0.js"></script>
     <script src="js/popper.min.js"></script>
@@ -92,5 +103,3 @@
     <script src="js/bootstrap-datepicker.min.js"></script>
     <script src="js/isotope.pkgd.min.js"></script>
     <script src="js/aos.js"></script>
-
-    <script src="js/main.js"></script>

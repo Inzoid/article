@@ -24,7 +24,8 @@ class ReminderRequest extends FormRequest
     public function rules()
     {
         return [
-            'password' => 'required|min:8|confirmed',
+            'password'    => 'required',
+            'passwordconfirmation' => 'required|min:8|confirmed',
         ];
     }
 }

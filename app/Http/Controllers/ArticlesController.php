@@ -23,16 +23,30 @@ class ArticlesController extends Controller
     }
     public function index(Request $request)
     {
-        $content = $request->input('content');
-            if(!empty($content)){
-                $articles = Article::Where('title', 'like', '%' . $content . '%')
-                ->orWhere('content', 'like', '%' . $content . '%')->paginate(5);
-            }else{
-                $articles = Article::paginate(4);
-            }
+        // dd($request->all());
+        if ($request->ajax()) {
+            $articles = Article::with('comments')->where
+                ('title', 'like', '%' . $request->search . '%')->orderBy
+                ('created_at', 'desc')->paginate(3);
+            $view = (String) view('articles.list')->with('articles',
+                $articles)->render();
+            return response()->json(['view'=> $view, 'status' => 'success']);
+        }
+        $articles = Article::with('comments')->orderBy
+            ('created_at', 'desc')->paginate(3);
+        return view('articles.index')->with('articles', $articles);
 
-            // Session::flash('notice', 'Create article success');
-            return view('articles/index')->with('articles', $articles);
+        // $content = $request->input('content');
+        //     if(!empty($content)){
+        //         $articles = Article::Where('title', 'like', '%' . $content . '%')
+        //         ->orWhere('content', 'like', '%' . $content . '%')->paginate(5);
+        //     }else{
+        //         $articles = Article::paginate(4);
+        //     }
+
+        //     // Session::flash('notice', 'Create article success');
+        //     return view('articles/index')->with('articles', $articles);
+
     }
 
     /**

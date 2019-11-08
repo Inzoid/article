@@ -48,12 +48,22 @@
           </div>
         @endif
 
+		@if(session('error'))
+          <div class="alert alert-info alert-dismissible fade show" role="alert"">
+                  <strong>{!!session('error') !!}</strong>
+                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+
+                  </button>
+          </div>
+        @endif
+
 					<span class="login100-form-title p-b-34 p-t-27">
 						Forgot Password
 					</span>
 
               
 					<div class="wrap-input100 validate-input" data-validate = "Enter email">
+						<span class="text-danger">{!! $errors->first('email') !!}</span>
 						<input class="input100" type="email" name="email" placeholder="Email">
 						<span class="focus-input100" data-placeholder="&#xf207;"></span>
 					</div>
