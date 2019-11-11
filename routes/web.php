@@ -31,3 +31,10 @@ Route::post('/forgot-password', 'ReminderController@store')->name('reminders.sto
 
 Route::get('reset-password/{id}/{token}', 'ReminderController@edit')->name('reminders.edit');
 Route::post('reset-password/{id}/{token}', 'ReminderController@update')->name('reminders.update');
+
+//middleware admin
+Route::group(['prefix' => 'admin', 'middleware' => ['sentinel', 'hasAdmin'] ],
+function () {
+    Route::get('/articles', 'ArticlesController@index')->name('admin.dashboard');
+    Route::get('/dashboard', 'Admin\DashboardAdminController@index')->name('admin.article.list');
+});

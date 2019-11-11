@@ -21,3 +21,24 @@ $('.search-text').on('keyup', function() {
     });
 });
 
+$('.comment').on('click', function() {
+        $.ajax({
+            url: '/show',
+            type: 'POST',
+        dataType: 'json',
+        data : {
+            'comment': $('.show_comment').serialize()
+        },
+        success:function (data) {
+            $('.show_comment').html(data['view']);
+            console.log(data);
+        },
+        error: function(xhr, status) {
+            console.log(xhr.error + "ERROR STATUS : " + status);
+        },
+        complete: function () {
+            alreadyloading = false;
+        }
+    });
+});
+

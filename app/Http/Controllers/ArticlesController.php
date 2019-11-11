@@ -20,6 +20,7 @@ class ArticlesController extends Controller
     public function construct()
     {
         $this->middleware('sentinel');
+        $this->middleware('sentinel.role');
     }
     public function index(Request $request)
     {
@@ -27,13 +28,13 @@ class ArticlesController extends Controller
         if ($request->ajax()) {
             $articles = Article::with('comments')->where
                 ('title', 'like', '%' . $request->search . '%')->orderBy
-                ('created_at', 'desc')->paginate(3);
+                ('created_at', 'desc')->paginate(4);
             $view = (String) view('articles.list')->with('articles',
                 $articles)->render();
             return response()->json(['view'=> $view, 'status' => 'success']);
         }
         $articles = Article::with('comments')->orderBy
-            ('created_at', 'desc')->paginate(3);
+            ('created_at', 'desc')->paginate(4);
         return view('articles.index')->with('articles', $articles);
 
         // $content = $request->input('content');
@@ -59,6 +60,7 @@ class ArticlesController extends Controller
     {
         return view('articles/create');
     }
+    
 
     /**
      * Store a newly created resource in storage.

@@ -1,11 +1,10 @@
 <?php
 
 namespace App\Http\Middleware;
-
-use Closure;
 use Sentinel;
+use Closure;
 
-class SentinelMiddleware
+class hasWriter
 {
     /**
      * Handle an incoming request.
@@ -16,13 +15,9 @@ class SentinelMiddleware
      */
     public function handle($request, Closure $next)
     {
-        if(Sentinel::guest()) {
-            if ($request->ajax()) {
-                return response('Unautorizhed', 401);
-            } else {
-                return redirect()->guest('login');
-            }
+        if(Sentinel::getUser()->roles()->first()->slug == 'writer') {
+            return $next($request);
         }
-        return $next($request);
+            return redirect()->route('login');
     }
 }

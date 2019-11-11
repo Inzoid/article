@@ -36,7 +36,7 @@
           <h4 class="text-white">Komentar</h4>
       </div>
 
-
+  <div class="show_comment">
         @foreach ($comments as $c)
         <div class="card">
             <div class="card-body">
@@ -46,8 +46,7 @@
         </div>
         @endforeach
     </div>
-
-    
+  </div>
 
     <div class="comment-form-wrap pt-5">
 
@@ -75,13 +74,12 @@
           <div class="col-lg-8 mb-5 " >
             <form action="{{ route('comments.store') }}" method="post">
             {{ csrf_field() }}
-            <div class="form-group">
-                    <label for="name">Name </label>
-                    <input type="text" class="form-control" name="user">
-                  </div>
-        
                   <input type="hidden" name="article_id" class="form-control" value="{!! $article->id !!}">
-               
+                  
+                  <div class="form-group">
+                    <label for="name">Name </label>
+                    <input type="text" class="form-control" name="user" >
+                  </div>
 
                   <div class="form-group">
                     <label for="message">Message</label>
@@ -89,8 +87,10 @@
                   </div>
               
                   <div class="form-group">
-                    <input type="submit" value="Post Comment" class="btn btn-primary btn-md text-white">
-                    <a href="/" class="btn btn-danger">Back</a>
+                    <div class="comment">
+                      <input type="submit" value="Post Comment" class="btn btn-primary btn-md text-white">
+                      <a href="/" class="btn btn-danger">Back</a>
+                    </div>
                   </div>
 
             

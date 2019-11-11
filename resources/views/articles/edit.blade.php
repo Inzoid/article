@@ -18,7 +18,7 @@
                 </div>
               </div>
 
-              <div class="row">
+        <div class="row">
           <div class="col-lg-8 mb-5" >
             <form action="#" method="post">
               <div class="form-group row">
@@ -42,9 +42,9 @@
                 </div>
               </div>
             </form>
-          </div>
-          
-    </div> <!-- END .site-section -->
+          </div>    
+        </div> 
+<!-- END .site-section -->
 
 <div class="row pt-5 mt-5 text-center">
           <div class="col-md-12">

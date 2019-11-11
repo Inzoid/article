@@ -36,19 +36,49 @@ class CommentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
+
     public function store(Request $request)
     {
+        
         $validate = Validator::make($request->all(), Comment::valid());
         if($validate->fails()) {
             return redirect::to('articles/' . $request->article_id)
                 ->withErrors($validate)
                 ->withInput();
         } else {
-            Comment::create($request->all());
-            Session::flash('notice', 'Succes add comment');
-            return Redirect::to('articles/'. $request->article_id);
+            $request->ajax();
+                Comment::create($request->all());
+                Session::flash('notice', 'Succes add comment');
+                return Redirect::to('articles/'. $request->article_id);
+
+            $comment = Article::with('content', 'user')->where('article_id');
+            $view = (String) view('articles.show')->with('user', 'content',
+            $comment)->render();
+            return response()->json(['view'=> $view, 'status' => 'success' . $request->article_id]);
         }
     }
+    
+    // public function store(Request $request)
+    // {    
+    //     if ($request->ajax()) {
+    //         Comment::create($request->all());
+    //         $comment = Article::with('content', 'user')->where('article_id' . $request->article_id)
+    //         ->orderBy('created_at', 'desc');
+    //         $view = (String) view('articles.show')->with('user', 'content',
+    //         $comment)->render();
+    //         return response()->json(['view'=> $view, 'status' => 'success']);
+    //         // $validate = Validator::make($request->all(), Comment::valid());
+    //         // if($validate->fails()) {
+    //         //     return redirect::to('articles/' . $request->article_id)
+    //         //         ->withErrors($validate)
+    //         //         ->withInput();
+    //         // } else {
+    //             // Comment::create($request->all());
+    //             // Session::flash('notice', 'Succes add comment');
+    //             // return Redirect::to('articles/');
+
+    //     }
+    // }
 
     /**
      * Display the specified resource.
