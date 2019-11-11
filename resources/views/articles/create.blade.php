@@ -5,45 +5,50 @@
 <div class="site-section">
       <div class="container">
 
-        <form action="{{ route('articles.store') }}" method="POST">
+        <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
           {{ csrf_field() }}           
         <div class="mb-3">           
          <h3>New Artikel</h3>
         </div>
 
-        @if(session('notice'))
-          <div class="alert alert-danger alert-dismissible fade show" role="alert"">
-                  <strong>{!!session('notice') !!}</strong>
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-
-                  </button>
-          </div>
-        @endif
+       
        
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="#" method="post">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
                   <input type="text" name="title" class="form-control" placeholder="Title">
+                  <div class="text-danger">{{ $errors->first('title') }}</div>
+
                 </div>
               </div>
 
         <div class="row">
           <div class="col-lg-8 mb-5" >
-            <form action="#" method="post">
               <div class="form-group row">
                 <div class="col-md-6 mb-4 mb-lg-0">
                   <input type="text" name="author" class="form-control" placeholder="Author">
+                  <div class="text-danger">{{ $errors->first('author') }}</div>
                 </div>
               </div>
+
 
               <div class="form-group row">
                 <div class="col-md-12">
                   <textarea name="content" id="" class="form-control" placeholder="Write your article." cols="30" rows="10"></textarea>
+                  <div class="text-danger">{{ $errors->first('content') }}</div>
                 </div>
               </div>
               
+        <div class="row">
+          <div class="col-lg-8 mb-5" >
+              <div class="form-group row">
+                <div class="col-md-6 mb-4 mb-lg-0">
+                <input type="file" name="article_image" class="form-control" placeholder="Author">
+                <div class="text-danger">{{ $errors->first('article_image') }}</div>
+                </div>
+              </div>
+
               <div class="form-group row">
                 <div class="col-md-6 mr-auto">
                   <input type="submit" class="btn btn-block btn-primary text-white py-3 px-5" value="Create Artikel">

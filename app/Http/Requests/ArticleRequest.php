@@ -26,7 +26,9 @@ class ArticleRequest extends FormRequest
         $id = $this->article;
         return [
             'title' => 'required|unique:articles,title|max:255',
-            'content' => 'required|unique:articles,content|min:50'
+            'content' => 'required|unique:articles,content|min:50',
+            'author' => 'required',
+            'article_images' => 'required|mimes:jpeg,jpg,png|max:2048'
         ];
     }
 
@@ -34,7 +36,9 @@ class ArticleRequest extends FormRequest
     {
         return[
             'title.required' => 'Title is required, At least fill a character',
-            'title.unique'   => 'Title must unique, Take another title'
+            'title.unique'   => 'Title must unique, Take another title',
+            'content.required' => 'Konten harus diisi',
+            'article_images.required' => 'Gambar harus diiisi',
         ];
     }
 }

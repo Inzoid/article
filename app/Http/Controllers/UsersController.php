@@ -30,9 +30,9 @@ class UsersController extends Controller
             $user = Sentinel::registerAndActivate($credentials);
             $user->roles()->attach($role_id);
             Session::flash('notice', 'Success create new user');
-            DB::commit(); 
-        } catch (\Throwabel $errors) {
-            DB::rollback();
+            DB::commit(); //simpan ke db
+        } catch (\Throwable $errors) {
+            DB::rollback(); //rollback jika ada yg error pas insert db
             Session::flash('error', $errors);
         }
         return redirect()->back();

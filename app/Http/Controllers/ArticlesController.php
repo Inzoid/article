@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Http\Request\ArticleRequest;
+use App\Http\Requests\ArticleRequest;
 use App\Article;
 use App\Comment;
 use Sentinel;
@@ -68,10 +68,28 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(\App\Http\Requests\ArticleRequest $request)
     {
-        //
-        Article::create($request->all());
+        $pathImage = 'images/article/';
+        $modelArticle = new Article();
+        if($request->article_image) {
+            $article_image = 'image_article' . str_random(5).time()
+            . '.' . $request->file('article_image')->getClientOriginalExtension();
+            
+            // dd($article_image);
+            $request->article_image->move(public_path('images/article/'),
+            $article_image);
+
+            $modelArticle->article_image = $article_image;
+        }
+        $title = $request->get('title');
+        $content = $request->get('content');
+        $author = $request->get('author');
+        $modelArticle->title = $title;
+        $modelArticle->content = $content;
+        $modelArticle->author = $author;
+        $modelArticle->save(); 
+        // Article::create($request->all());
         return redirect()->route("articles.index");
     }
 

@@ -1,6 +1,7 @@
 @foreach ($articles as $a)
+  <img src="{{ $a->img_article() }}" class="card-img-top">
   <div class="card text-center">
-  <div class="card-header bg-info">
+  <div class="card-header bg-dark">
   <h3  class="text-white">{!! $a->title !!}</h3>
   </div>
   <div class="card-body">
@@ -9,14 +10,14 @@
   <div class="card-footer text-muted">
      Author : <i>{!! $a->author !!}</i><br><br>
 
-     <center>
+<center>
   <form action="{{ route('articles.destroy', $a->id) }}" method="POST" >
     <a href="{{ route( 'articles.show', $a->id ) }}" class="btn btn-info">Detail</a>
     <a href="{{ route( 'articles.edit', $a->id ) }}" class="btn btn-success text-white">Edit</a>
     {{ csrf_field() }} {{ method_field('delete') }}
     <button class="btn btn-danger">Delete</button><br>
   </form>
-    </center>
+</center>
     </div>
   </div><br>
 @endforeach

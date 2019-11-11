@@ -10,4 +10,11 @@
                 <h3>Welcome Admin</h3>          
             </div>
 
+            <?php 
+              $user = Sentinel::getUser();
+              $role = $user->roles()->first()->slug;
+            ?>
+
+            <p>Selamat datang {{$role}} : {{$user->first_name}} {{$user->last_name}} </p>
+
 @endsection
