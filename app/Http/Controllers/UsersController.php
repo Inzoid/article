@@ -7,6 +7,7 @@ use Sentinel;
 use Session;
 use App\Http\Request\UserRequest;
 use DB;
+use App\Jobs\JobKedua;
 
 class UsersController extends Controller
 {
@@ -31,9 +32,11 @@ class UsersController extends Controller
             $user->roles()->attach($role_id);
             Session::flash('notice', 'Success create new user');
             DB::commit(); //simpan ke db
+            JobKedua::dispatch($user);
         } catch (\Throwable $errors) {
             DB::rollback(); //rollback jika ada yg error pas insert db
             Session::flash('error', $errors);
+            dd($error);
         }
         return redirect()->back();
         

@@ -62,16 +62,16 @@ class MigrationCartalystSentinel extends Migration
             $table->engine = 'InnoDB';
         });
 
-        // Schema::create('roles', function (Blueprint $table) {
-        //     $table->increments('id');
-        //     $table->string('slug');
-        //     $table->string('name');
-        //     $table->text('permissions')->nullable();
-        //     $table->timestamps();
+        Schema::create('roles', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('slug');
+            $table->string('name');
+            $table->text('permissions')->nullable();
+            $table->timestamps();
 
-        //     $table->engine = 'InnoDB';
-        //     $table->unique('slug');
-        // });
+            $table->engine = 'InnoDB';
+            $table->unique('slug');
+        });
 
         Schema::create('role_users', function (Blueprint $table) {
             $table->integer('user_id')->unsigned();

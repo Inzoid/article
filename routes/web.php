@@ -15,6 +15,7 @@ Route::get('/', 'ArticlesController@index');
 Route::get('/create', 'ArticlesController@create');
 Route::get('/edit', 'ArticlesController@edit');
 Route::get('/show', 'ArticlesController@show');
+Route::get('/tesJob', 'HomeController@tesJob')->name('tesJob');
 
 Route::resource('/comments', 'CommentController', ['only'=>['store']]);
 Route::resource('/articles', 'ArticlesController');

@@ -11,6 +11,11 @@
          <h3>New Artikel</h3>
         </div>
 
+        @if(session('notice'))
+          <div class="alert alert-success">
+                  <strong>{!!session('notice') !!}</strong>
+          </div>
+        @endif
        
        
         <div class="row">

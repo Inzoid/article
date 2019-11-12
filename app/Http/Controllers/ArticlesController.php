@@ -68,7 +68,7 @@ class ArticlesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(\App\Http\Requests\ArticleRequest $request)
+    public function store(Request $request)
     {
         $pathImage = 'images/article/';
         $modelArticle = new Article();

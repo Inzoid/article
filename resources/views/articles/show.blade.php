@@ -8,10 +8,10 @@
           <div class="col-md-6">
             <div class="heading-39101 mb-3">
               <h3>Detail Article</h3>
-              <hr>
             </div>
 
 <div class="card text-center">
+<img src="{{ $article->img_article() }}" class="card-img-top">
   <div class="card-header bg-primary">
   <h3 class="text-white">{!! $article->title !!}</h3>
   </div>

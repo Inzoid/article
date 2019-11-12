@@ -1,7 +1,7 @@
 @foreach ($articles as $a)
-  <img src="{{ $a->img_article() }}" class="card-img-top">
   <div class="card text-center">
-  <div class="card-header bg-dark">
+  <img src="{{ $a->img_article() }}" class="card-img-top">
+  <div class="card-header bg-info">
   <h3  class="text-white">{!! $a->title !!}</h3>
   </div>
   <div class="card-body">
